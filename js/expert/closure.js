@@ -34,6 +34,7 @@ pwdUtils.verify('test1234!')
 
 /**
  * @example2: closure with variable scope
+ * @description: chứng minh closue có thể truy cập vào biến inner scope, enclosing func và global 
  */
 var amIGlobal = window === this;
 

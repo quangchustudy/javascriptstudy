@@ -1,6 +1,7 @@
 /**
  * @module
  * @type {{incrementScore: incrementScore, getScore: getScore, playerId: number}}
+ * @desciption: viết một module game khởi tạo điểm lúc bắt đầu game = 0, và có hàm tăng điểm và xem điểm hiện tại
  */
 
 var game = (function startGame() {
