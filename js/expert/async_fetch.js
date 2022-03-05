@@ -41,11 +41,11 @@ async function getUserDetails() {
   const userRequests = []
   for (let i=0; i<5; i++) {
     const userId = responseData.data[i].id
-    if(i===3 || i===4) {
+    // if(i===3 || i===4) {
+    //   userRequests.push(getData(`${BASE_URL}/user/${userId}`))
+    // } else {
       userRequests.push(getData(`${BASE_URL}/user/${userId}`))
-    } else {
-      userRequests.push(getData(`${BASE_URL}/user/${userId}`))
-    }
+    // }
 
   }
   console.log('userRequests: ',userRequests)
@@ -56,11 +56,12 @@ async function getUserDetails() {
   //return firstUserData
 }
 
-async function test() {
-  const abc = await getUserDetails()
-  console.log('abc:',abc)
+async function processData() {
+  const data = await getUserDetails()
+  console.log('data:',data)
 }
 
+processData()
 
 
 
