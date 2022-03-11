@@ -2,20 +2,6 @@
  * @description: try with var
  * @type {string}
  */
-// var x = 'x';
-//
-// function makeFunc() {
-//   var x = 'x2';
-//   console.log(x);
-//   if(true) {
-//     var x = 'x3';
-//     console.log(x);
-//   }
-//   console.log(x);
-// }
-//
-// makeFunc();
-// console.log(x);
 
 /**
  * @description: try with let
@@ -36,3 +22,17 @@ function makeFunc() {
 
 makeFunc();
 console.log(x);
+
+var y = 'y';
+
+function makeFuncY() {
+  var y = 'y2';
+  console.log(y);
+  if(true) {
+    var y = 'y3';
+    console.log(y);
+  }
+  console.log(y);
+}
+makeFuncY();
+console.log(y);
