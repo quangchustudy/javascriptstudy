@@ -1,6 +1,9 @@
 /**
  * @description: SCOPE CHAIN
  * @type {string}
+ * @output:
+ * green
+ * foo
  */
 var color = 'red';
 var name = 'foo';
