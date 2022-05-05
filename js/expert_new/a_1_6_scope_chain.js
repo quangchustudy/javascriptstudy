@@ -1,7 +1,7 @@
 /**
  * @description: SCOPE CHAIN
  * @type {string}
- * @output:
+ * @output: check it
  * green
  * foo
  */
