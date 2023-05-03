@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  ecs-tasks-set
+
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+# # Set to zero
+#   SetZeroFunction:
+#     Type: AWS::Serverless::Function
+#     Properties:
+#       CodeUri: lambda-triggers/set-zero/
+#       Handler: set-zero.handler
+#       Runtime: nodejs18.x
+
+# # Set to one
+#   SetOneFnction:
+#     Type: AWS::Serverless::Function
+#     Properties:
+#       CodeUri: lambda-triggers/set-one/
+#       Handler: set-one.handler
+#       Runtime: nodejs18.x
+
+# Set Task
+  SetTaskFnction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-triggers/set-task/
+      Handler: set-task.handler
+      Runtime: nodejs18.x
+
+
+Outputs:
+  # SetZeroFunction:
+  #   Description: "Hello World Lambda Function ARN"
+  #   Value: !GetAtt SetZeroFunction.Arn
+  # SetZeroFunction:
+  #   Description: "Implicit IAM Role created for Hello World function"
+  #   Value: !GetAtt SetZeroFunction.Arn
+  # SetOneFnction:
+  #   Description: "Hello World Lambda Function ARN"
+  #   Value: !GetAtt SetOneFnction.Arn
+  # SetOneFnction:
+  #   Description: "Implicit IAM Role created for Hello World function"
+  #   Value: !GetAtt SetOneFnction.Arn
+  SetTaskFnction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt SetTaskFnction.Arn
+  SetTaskFnction:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt SetTaskFnction.Arn
