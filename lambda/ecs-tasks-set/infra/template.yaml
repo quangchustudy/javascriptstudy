@@ -30,7 +30,7 @@ Resources:
     Properties:
       CodeUri: lambda-triggers/set-task/
       Handler: set-task.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs14.x
 
 
 Outputs:

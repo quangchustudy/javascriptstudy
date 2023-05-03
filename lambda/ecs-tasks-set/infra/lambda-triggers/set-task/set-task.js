@@ -8,7 +8,7 @@ const CLUSTER_NAME = 'test';
 const SERVICE_NAME = ['product-composite', 'product-service', 'review-service', 'recommendation-service','alb-product-composite-service','frontend-service','backend_service'];
 
 module.exports.handler = async (event, context) => {
-    console.log(`Deisred task count is: ${event.desiredCount}`);
+    console.log(`Deisred task count : ${event.desiredCount}`);
     const ecs_services = SERVICE_NAME.map((serviceName) => ({service: serviceName, cluster: CLUSTER_NAME,  desiredCount: event.desiredCount}));
     
     try {
