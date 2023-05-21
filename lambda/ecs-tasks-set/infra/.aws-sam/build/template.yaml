@@ -13,6 +13,12 @@ Resources:
       CodeUri: SetTaskFnction
       Handler: set-task.handler
       Runtime: nodejs14.x
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /set-task
+            Method: post
     Metadata:
       SamResourceId: SetTaskFnction
 Outputs:

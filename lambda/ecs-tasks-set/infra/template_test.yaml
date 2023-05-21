@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  SetTaskFnction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-triggers/set-task/
+      Handler: set-task.handler
+      Runtime: nodejs14.x
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /set-task
+            Method: POST
+            RestApiId:
+              Ref: MyApiGateway
+            # RequestTemplates:
+            #   application/json: "#set($inputRoot = $input.path('$'))\n$input.json('$')"
+            # PassthroughBehavior: NEVER
+  # MyLambdaFunction:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: my-lambda/
+  #     Handler: app.lambdaHandler
+  #     Runtime: nodejs14.x
+  #     Events:
+  #       ApiGatewayEvent:
+  #         Type: Api
+  #         Properties:
+  #           Path: /my-api
+  #           Method: POST
+  #           RestApiId:
+  #             Ref: MyApiGateway
+  #           RequestTemplates:
+  #             application/json: "#set($inputRoot = $input.path('$'))\n$input.json('$')"
+  #           PassthroughBehavior: NEVER
+
+  MyApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      DefinitionBody:
+        swagger: '2.0'
+        info:
+          title: My Set Task API
+        paths:
+          /my-api:
+            post:
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub:
+                    - 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFunctionArn}/invocations'
+                    - LambdaFunctionArn: !GetAtt SetTaskFnction.Arn
+                httpMethod: POST
+                type: aws
+                passthroughBehavior: NEVER
+                requestTemplates:
+                  application/json: "#set($inputRoot = $input.path('$'))\n$input.json('$')"
+                responses:
+                  "2\\d{2}" :
+                    statusCode: 200
+                    responseTemplates:
+                      application/json: "#set($inputRoot = $input.path('$'))\n$input.json('$')"
+
+                
+
+# Outputs:
+#   MyApiUrl:
+#     Description: URL for the deployed API
+#     Value: !Sub 'https://${MyApiGateway}.execute-api.${AWS::Region}.amazonaws.com/${MyApiGateway.StageName}'

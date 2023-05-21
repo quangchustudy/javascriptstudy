@@ -32,3 +32,13 @@ function second2() {
 
 first2(second2);
 
+console.log('another example');
+const myPromise = new Promise((resolve, reject) => {
+  const callback = () => {
+    resolve('done');
+  }
+  setTimeout(callback, 1000);
+  
+})
+
+myPromise.then(console.log);
