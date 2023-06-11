@@ -31,6 +31,7 @@ function getData(url) {
 
 async function getUserDetails() {
   const responseData = await getData(`${BASE_URL}/user`)
+  console.log("responseData: ");
   console.log(responseData)
   //Get first user data
   const firstId = responseData.data[0].id
