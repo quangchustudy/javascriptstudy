@@ -57,3 +57,4 @@ console.log(sw2);
 console.log(sw2.steps());
 console.log(sw2.brand);
 console.log(sw2.time());
+
